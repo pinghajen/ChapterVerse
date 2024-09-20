@@ -122,7 +122,7 @@ pub fn find_bible(input: String, default: &String) -> String {
         .unwrap_or_else(|| default.to_string())
 }
 
-pub fn avaialble_bibles() -> String {
+pub fn available_bibles() -> String {
     BIBLES
         .keys()
         .map(|key| key.to_string())
