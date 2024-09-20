@@ -11,7 +11,7 @@ use helpers::Metrics;
 use helpers::print_color::PrintCommand;
 use helpers::response_builder::ResponseBuilder;
 use helpers::statics::*;
-use helpers::statics::{avaialble_bibles, find_bible};
+use helpers::statics::{available_bibles, find_bible};
 use helpers::statics::BIBLES;
 use twitch::chat::{Listener, Listeners, Replier};
 use twitch::common::message_data::{MessageData, Type};
@@ -150,7 +150,7 @@ async fn handle_twitch_messages(mut listener_reciever: mpsc::UnboundedReceiver<M
                                     "!help" => {
                                         message.tags.push(Type::Command);
                                         Metrics::add_user(&METRICS, &display_name).await;
-                                        help(avaialble_bibles, &prefix)
+                                        help(available_bibles, &prefix)
                                     }
                                     "!joinchannel" => {
                                         message.tags.push(Type::Command);
@@ -207,7 +207,7 @@ async fn handle_twitch_messages(mut listener_reciever: mpsc::UnboundedReceiver<M
                                     "!translation" => {
                                         message.tags.push(Type::Command);
                                         Metrics::add_user(&METRICS, &display_name).await;
-                                        translation(&display_name, params, avaialble_bibles).await
+                                        translation(&display_name, params, available_bibles).await
                                     }
                                     "!votd" => {
                                         message.tags.push(Type::Command);
